@@ -26,10 +26,10 @@ public class Game : Microsoft.Xna.Framework.Game
         
         _bodies = new List<Body>();
 
-        body_one = new Body(new Vector2(300.0f, 300.0f),1, 1);
+        body_one = new Body(new Vector2(300.0f, 300.0f),100000000, 0.4f);
         _bodies.Add(body_one);
         
-        body_two = new Body(new Vector2(1300.0f, 900.0f), 1, 1);
+        body_two = new Body(new Vector2(1300.0f, 900.0f), 1000000, 0.1f);
         _bodies.Add(body_two);
     }
 
@@ -55,6 +55,12 @@ public class Game : Microsoft.Xna.Framework.Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
+
+        foreach (Body body in _bodies)
+        {
+            body.Update(_bodies);
+        }
+        
         base.Update(gameTime);
     }
 

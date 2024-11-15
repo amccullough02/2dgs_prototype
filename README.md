@@ -12,7 +12,7 @@ Disclaimer: subject to change.
 
 | Feature No. | Description                                   | Status |
 |-------------|-----------------------------------------------|--------|
-| 1           | Render bodies and model gravity between them. | To-do  |
+| 1           | Render bodies and model gravity between them. | Done!  |
 | 2           | Load bodies from JSON file.                   | To-do  |
 | 3           | Adding new bodies at run-time.                | To-do  |
 | 4           | Modify object velocity at run-time.           | To-do  |
