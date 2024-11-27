@@ -26,6 +26,11 @@ public class Game : Microsoft.Xna.Framework.Game
         _bodies = new List<Body>();
         
         _saveSystem = new SaveSystem();
+    }
+
+    protected override void Initialize()
+    { 
+        Window.Title = "2DGS";
         
         SaveData saveData = _saveSystem.Load();
 
@@ -33,11 +38,6 @@ public class Game : Microsoft.Xna.Framework.Game
         {
             _bodies.Add(new Body(bodyData.Position, bodyData.Mass, bodyData.DisplayRadius));
         }
-    }
-
-    protected override void Initialize()
-    { 
-        Window.Title = "2DGS";
         
         base.Initialize(); 
     }
