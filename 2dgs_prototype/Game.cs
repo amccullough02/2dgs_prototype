@@ -11,8 +11,7 @@ public class Game : Microsoft.Xna.Framework.Game
     private SpriteBatch _spriteBatch;
     
     private List<Body> _bodies;
-    private Body body_one;
-    private Body body_two;
+    private SaveSystem _saveSystem;
 
     public Game()
     {
@@ -25,19 +24,22 @@ public class Game : Microsoft.Xna.Framework.Game
         IsMouseVisible = true;
         
         _bodies = new List<Body>();
-
-        body_one = new Body(new Vector2(300.0f, 300.0f),100000000, 0.4f);
-        _bodies.Add(body_one);
         
-        body_two = new Body(new Vector2(1300.0f, 900.0f), 1000000, 0.1f);
-        _bodies.Add(body_two);
+        _saveSystem = new SaveSystem();
+        
+        SaveData saveData = _saveSystem.Load();
+
+        foreach (var bodyData in saveData.Bodies)
+        {
+            _bodies.Add(new Body(bodyData.Position, bodyData.Mass, bodyData.DisplayRadius));
+        }
     }
 
     protected override void Initialize()
-    {
+    { 
         Window.Title = "2DGS";
         
-        base.Initialize();
+        base.Initialize(); 
     }
 
     protected override void LoadContent()

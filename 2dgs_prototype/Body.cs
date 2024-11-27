@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -58,6 +59,12 @@ public class Body
 
     public void Draw(SpriteBatch spriteBatch)
     {
+
+        if (_texture == null)
+        {
+            throw new InvalidOperationException("Body has no texture!");
+        }
+        
         spriteBatch.Draw(_texture, 
             _position,
             null,
